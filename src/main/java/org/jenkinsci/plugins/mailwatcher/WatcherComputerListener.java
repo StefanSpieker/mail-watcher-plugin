@@ -70,26 +70,18 @@ public class WatcherComputerListener extends ComputerListener {
         this.jenkinsRootUrl = jenkinsRootUrl;
     }
 
-    @Override
-    public void onOffline(final Computer c) {
-
-        getNotification().online(false)
-                .subject("marked offline")
-                .send(c)
-        ;
-    }
 
     @Override
     public void onOffline(@NonNull final Computer c, final OfflineCause cause) {
 
-        if (cause == null) {
-            onOffline(c);
-            return;
+        String body = "";
+        if (cause!=null) {
+            body = cause.toString();
         }
 
         getNotification().online(false)
                 .subject("marked offline")
-                .body(cause.toString())
+                .body(body)
                 .send(c)
         ;
     }
