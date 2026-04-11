@@ -73,7 +73,7 @@ class WatcherComputerListenerTest {
 
     @Test
     void onOffline() throws Exception {
-        listener.onOffline(getComputerStub());
+        listener.onOffline(getComputerStub(), null);
 
         final MailWatcherNotification notification = captureNotification();
 
